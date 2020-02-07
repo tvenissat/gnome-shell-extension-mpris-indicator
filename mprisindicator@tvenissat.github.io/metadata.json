@@ -1,0 +1,8 @@
+{
+"uuid": "mprisindicator@tvenissat.github.io",
+"name": "Mpris Indicator",
+"description": "A full featured MPRIS indicator.",
+"original-author": "tvenissat@github.io",
+"shell-version": ["3.34"],
+"url": "https://github.com/tvenissat/gnome-shell-extension-mpris-indicator/"
+}
