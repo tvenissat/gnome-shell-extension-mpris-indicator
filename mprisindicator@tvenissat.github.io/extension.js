@@ -39,7 +39,12 @@ function enable() {
     if (!Panel.statusArea[ROLE]) {
         stockMpris.actor.visible = false;
         stockMpris._shouldShow = () => false;
-        Panel.addToStatusArea(ROLE, new MprisIndicatorButton());
+
+        /*
+          - 0 is the position
+          - `left` is the box where we want our button to be displayed (left/center/right)
+        */
+        Panel.addToStatusArea(ROLE, new MprisIndicatorButton(), 0, 'left');
     }
 }
 
