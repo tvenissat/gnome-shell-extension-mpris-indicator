@@ -1584,7 +1584,7 @@ var MprisIndicatorButton = GObject.registerClass({
                     this.menu.toggle();
             }
             if (visible) {
-                let delimiter = ' \u2022 '; // Unicode Character 'BULLET' (U+2022).
+                let delimiter = ' • '; // Unicode Character 'BULLET' (U+2022).
                 let delimiterLength = delimiter.length;
                 let suffix = '...';
                 let suffixLength = suffix.length;
