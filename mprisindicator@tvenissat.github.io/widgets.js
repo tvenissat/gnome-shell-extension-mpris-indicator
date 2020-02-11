@@ -1583,55 +1583,12 @@ var MprisIndicatorButton = GObject.registerClass({
             if (this.menu.isOpen && !visible) {
                     this.menu.toggle();
             }
-            if (visible) {
-                let delimiter = ' • '; // Unicode Character 'BULLET' (U+2022).
-                let delimiterLength = delimiter.length;
-                let suffix = '...';
-                let suffixLength = suffix.length;
-                let maxSubstringLength = 31;
-                let maxStringLength = (maxSubstringLength * 2) + delimiterLength;
-                
-                var artist = activePlayer ? activePlayer.artist : '';
-                let artistLength = artist.length;
-                var isArtistEmpty = artistLength <= 0;
 
-                var title = activePlayer ? activePlayer.trackTitle : '';
-                let titleLength = title.length;
-                var isTitleEmpty = titleLength <= 0;
+            let artist = activePlayer ? activePlayer.artist : '';
+            let title = activePlayer ? activePlayer.trackTitle : '';
 
-                switch (artist) {
-                    case 'YouTube':
-                    case 'Spotify':
-                    case 'Web Media Controller':
-                        isArtistEmpty = true;
-                }
+            indicator.last_child.text = title ? artist + ' • ' + title : artist;
 
-                if (!isArtistEmpty && !isTitleEmpty) {
-                    if (artistLength + delimiterLength + titleLength > maxStringLength) {
-                        if (artistLength > maxSubstringLength && titleLength > maxSubstringLength) {
-                            artist = artist.substring(0, maxSubstringLength - suffixLength) + suffix;
-                            title = title.substring(0, maxSubstringLength - suffixLength) + suffix;
-                        } else if (artistLength > maxSubstringLength) {
-                            artist = artist.substring(0, maxStringLength - titleLength - suffixLength) + suffix;
-                        } else {
-                            title = title.substring(0, maxStringLength - artistLength - suffixLength) + suffix;
-                        }
-                    }
-                    indicator.last_child.text = artist + delimiter + title;
-                } else if (!isArtistEmpty) {
-                    if (artistLength > maxStringLength) {
-                        artist = artist.substring(0, maxStringLength - suffixLength) + suffix;
-                    }
-                    indicator.last_child.text = artist;
-                } else if (!isTitleEmpty) {
-                    if (titleLength > maxStringLength) {
-                        title = title.substring(0, maxStringLength - suffixLength) + suffix;
-                    }
-                    indicator.last_child.text = title;
-                } else {
-                    indicator.last_child.text = '';
-                }
-            }
             this.visible = visible;
         };
 
