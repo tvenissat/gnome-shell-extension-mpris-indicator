@@ -1507,7 +1507,8 @@ var MprisIndicatorButton = GObject.registerClass({
         let artistTitleLabel = new St.Label({
             text: '',
             y_expand: true,
-            y_align: Clutter.ActorAlign.CENTER 
+            y_align: Clutter.ActorAlign.CENTER,
+            style_class: 'mpris-indicator-label'
         });
 
         indicator.add(playerIcon);
